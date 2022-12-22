@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="app">
+        <div>
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
         <router-view></router-view>
     </div>
 
@@ -16,8 +20,18 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
     <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
     <script>
+         let LoginComponent = {
+            template: '<div>login</div>'
+        };
+
+        let MainComponent = {
+            template: '<div>main</div>'
+        };
+
         let router = new VueRouter({
-            //routes : 페이지의 라우팅 정보 
+            // url 뒤의 # 빼줌
+            mode : 'history', 
+            //routes : 페이지의 라우팅 정보
             routes : [
                 {
                     //페이지의 url
@@ -32,13 +46,7 @@
             ]
         });
 
-        let loginComponent = {
-            template : '<div>login</div>'
-        };
-
-        let MainComponent = {
-            template: '<div>main</div>'
-        };
+       
 
         new Vue({
             el : '#app',

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+        <button v-on:click="addNum">increase</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                num : 10
+            },
+            watch : {
+                //data의 변화를 보고 특정 속성을 넣을 수 있음
+                //watch는 기본 파라미터로 newValue, oldValue가 있음 function(newValue, oldValue) {
+                //왠만하면 computed를 쓰고 왠만한 케이스는 computed로 해결 될것이다.
+                //캐싱에 대한 처리가 computed가 더 잘되어 있다.
+                num : function() {
+                    this.logText();
+                }
+            },
+            methods: {
+                addNum : function() {
+                    this.num = this.num + 1;
+                },
+                logText : function() {
+                    console.log('changed');
+                }
+            },
+        })
+    </script>
+</body>
+</html>
